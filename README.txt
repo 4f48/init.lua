@@ -1,2 +1,2 @@
 This is my init.lua, mainly here so I don't lose it, but you can use it for yourself too.
-Installing lazygit on your machine is required for lazygit.nvim to work correctly.
+Installing lazygit on your machine is required for lazygit.nvim to work correctly. //todo: add bash script to install required dnf packages
