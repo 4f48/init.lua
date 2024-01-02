@@ -11,4 +11,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(plugins, opts)
+require("lazy").setup({
+	{
+        	"kdheepak/lazygit.nvim",
+                dependencies = {
+            		"nvim-lua/plenary.nvim",
+        	},
+    	},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+})
+
+vim.cmd.colorscheme "catppuccin"
