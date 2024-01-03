@@ -10,5 +10,12 @@ vim.keymap.set("i", "<A-s>", "<Cmd>wq<CR>") -- Save/Write buffer & quit (Insert 
 vim.keymap.set("n", "<A-s>", "<Cmd>wq<CR>") -- Save/Write buffer & quit (Normal mode)
 vim.keymap.set("v", "<A-s>", "<Cmd>wq<CR>") -- Save/Write buffer & quit (Visual mode)
 
+-- Typing keybinds
+vim.keymap.set("i", '"', '""<Left>') -- Duplicate double quotes
+vim.keymap.set("i", "'", "''<Left>") -- Duplicate quotes
+vim.keymap.set("i", "(", "()<Left>") -- Duplicate brackets
+vim.keymap.set("i", "[", "[]<Left>") -- Duplicate square brackets
+vim.keymap.set("i", "<", "<><Left>") -- Duplicate chevrons
+
 -- Plugin keybinds
 vim.keymap.set("n", "<leader>g", "<Cmd>LazyGit<CR>") -- Open LazyGit
