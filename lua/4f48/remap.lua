@@ -14,6 +14,7 @@ vim.keymap.set("v", "<A-s>", "<Cmd>wq<CR>") -- Save/Write buffer & quit (Visual 
 vim.keymap.set("i", '"', '""<Left>') -- Duplicate double quotes
 vim.keymap.set("i", "'", "''<Left>") -- Duplicate quotes
 vim.keymap.set("i", "(", "()<Left>") -- Duplicate brackets
+vim.keymap.set("i", "{", "{}<Left>") -- Duplicate curly brackets
 vim.keymap.set("i", "[", "[]<Left>") -- Duplicate square brackets
 vim.keymap.set("i", "<", "<><Left>") -- Duplicate chevrons
 
