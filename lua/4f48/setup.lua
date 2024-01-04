@@ -5,7 +5,6 @@ local has_words_before = function()
 end
 
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -23,17 +22,10 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<Tab>"] = cmp.mapping(function(fallback)
-	      		if cmp.visible() then
-				cmp.select_next_item()
-	      		elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-	      		elseif has_words_before() then
-				cmp.complete()
-	      		else
-				fallback()
-	      		end
-    		end, { "i", "s" }),
+		["<Up>"] = cmp.mapping.select_prev_item(),
+		["<Down>"] = cmp.mapping.select_next_item(),
+		["<Enter>"] = cmp.mapping.confirm(),
+		["<Esc>"] = cmp.mapping.abort(),
 	}),
 	sources = cmp.config.sources ({
 		{ name = "nvim_lsp" },
@@ -107,3 +99,8 @@ vim.defer_fn(function()
 end, 0)
 
 vim.cmd.colorscheme "catppuccin"
+
+vim.wo.number = true
+vim.o.undofile = true
+vim.o.breakindent = true
+vim.o.clipboard = 'unnamedplus'
