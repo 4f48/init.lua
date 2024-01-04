@@ -39,5 +39,15 @@ require("lazy").setup({
 	},
 	{ "folke/neodev.nvim", opts = {} },
 	{ "williamboman/mason.nvim" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter-textobjects',
+		},
+		build = function()
+			local ts_update = require("nvim-treesitter.install").update()
+			ts_update()
+		end,
+	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
