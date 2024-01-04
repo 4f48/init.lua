@@ -1,10 +1,6 @@
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 local cmp = require("cmp")
+local harpoon = require("harpoon")
+local statusline = require("statusline")
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -98,9 +94,31 @@ vim.defer_fn(function()
   }
 end, 0)
 
+harpoon:setup({})
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+vim.keymap.set("n", "<leader>ht", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+
 vim.cmd.colorscheme "catppuccin"
 
 vim.wo.number = true
 vim.o.undofile = true
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
+vim.o.laststatus = 3
