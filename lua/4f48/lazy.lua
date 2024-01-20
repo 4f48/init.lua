@@ -59,5 +59,16 @@ require("lazy").setup({
 	},
 	{ "beauwilliams/statusline.lua"	},
 	{ "mhinz/vim-signify" },
+	{
+	  "nvimdev/dashboard-nvim",
+	  event = 'VimEnter',
+	  config = function()
+	  require('dashboard').setup {
+	      theme = "hyper"
+	    }
+	  end,
+	  dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+	{ "xiyaowong/transparent.nvim" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 })
