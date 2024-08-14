@@ -1,1 +1,1 @@
-require("4f48")
+require("config")
